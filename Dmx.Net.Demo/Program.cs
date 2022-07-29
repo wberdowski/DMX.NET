@@ -34,11 +34,6 @@ namespace Dmx.Net.Demo
             openDmx.Dispose();
         }
 
-        private static double mod(double x, double m)
-        {
-            return (x % m + m) % m;
-        }
-
         private static void Timer_BeforeUpdate(object? sender, EventArgs e)
         {
             t += 0.05f;

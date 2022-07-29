@@ -6,47 +6,47 @@ namespace Dmx.Net.Controllers
     {
         public new bool IsOpen => _handle != IntPtr.Zero;
 
-        private const string DLL_NAME = "FTD2XX";
+        private const string DllName = "FTD2XX";
 
         #region INTEROP
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_Open")]
+        [DllImport(DllName, EntryPoint = "FT_Open")]
         private static extern Status FT_Open(uint index, ref IntPtr ftHandle);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_Close")]
+        [DllImport(DllName, EntryPoint = "FT_Close")]
         private static extern Status FT_Close(IntPtr ftHandle);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_Write")]
+        [DllImport(DllName, EntryPoint = "FT_Write")]
         private static extern Status FT_Write(IntPtr ftHandle, byte[] lpBuffer, uint dwBytesToWrite, ref uint lpdwBytesWritten);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_SetDataCharacteristics")]
+        [DllImport(DllName, EntryPoint = "FT_SetDataCharacteristics")]
         private static extern Status FT_SetDataCharacteristics(IntPtr ftHandle, DataBits uWordLength, StopBits uStopBits, Parity uParity);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_SetFlowControl")]
+        [DllImport(DllName, EntryPoint = "FT_SetFlowControl")]
         private static extern Status FT_SetFlowControl(IntPtr ftHandle, FlowControl usFlowControl, byte uXon, byte uXoff);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_Purge")]
+        [DllImport(DllName, EntryPoint = "FT_Purge")]
         private static extern Status FT_Purge(IntPtr ftHandle, PurgeFlags dwMask);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_ClrRts")]
+        [DllImport(DllName, EntryPoint = "FT_ClrRts")]
         private static extern Status FT_ClrRts(IntPtr ftHandle);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_SetBreakOn")]
+        [DllImport(DllName, EntryPoint = "FT_SetBreakOn")]
         private static extern Status FT_SetBreakOn(IntPtr ftHandle);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_SetBreakOff")]
+        [DllImport(DllName, EntryPoint = "FT_SetBreakOff")]
         private static extern Status FT_SetBreakOff(IntPtr ftHandle);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_ResetDevice")]
+        [DllImport(DllName, EntryPoint = "FT_ResetDevice")]
         private static extern Status FT_ResetDevice(IntPtr ftHandle);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_SetDivisor")]
+        [DllImport(DllName, EntryPoint = "FT_SetDivisor")]
         private static extern Status FT_SetDivisor(IntPtr ftHandle, char usDivisor);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_CreateDeviceInfoList")]
+        [DllImport(DllName, EntryPoint = "FT_CreateDeviceInfoList")]
         private static extern Status FT_CreateDeviceInfoList(ref uint numdevs);
 
-        [DllImport(DLL_NAME, EntryPoint = "FT_GetDeviceInfoDetail")]
+        [DllImport(DllName, EntryPoint = "FT_GetDeviceInfoDetail")]
         private static extern Status FT_GetDeviceInfoDetail(uint index, ref uint flags, ref DeviceType chiptype, ref uint id, ref uint locid, byte[] serialnumber, byte[] description, ref IntPtr ftHandle);
 
         #endregion
@@ -118,8 +118,10 @@ namespace Dmx.Net.Controllers
             {
                 Close();
                 FT_ResetDevice(_handle);
-                writeBuffer = new byte[0];
+                writeBuffer = Array.Empty<byte>();
                 IsDisposed = true;
+
+                GC.SuppressFinalize(this);
             }
         }
 
