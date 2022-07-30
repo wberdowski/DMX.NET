@@ -1,8 +1,8 @@
-﻿namespace Dmx.Net
+﻿namespace Dmx.Net.Common
 {
     public class DmxTimer : IDisposable
     {
-        public int Interval { get; protected set; }
+        public int Interval { get; }
         public event EventHandler? BeforeUpdate;
         public event EventHandler? AfterUpdate;
 

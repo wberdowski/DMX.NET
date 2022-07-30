@@ -1,4 +1,4 @@
-﻿namespace Dmx.Net
+﻿namespace Dmx.Net.Common
 {
     public abstract class ControllerBase : IController
     {
@@ -23,7 +23,7 @@
         /// <summary>
         /// Opens device.
         /// </summary>
-        public virtual void Open()
+        public virtual void Open(int deviceIndex)
         {
             canWrite = true;
             IsOpen = true;
@@ -143,6 +143,11 @@
                 Close();
                 writeBuffer = new byte[0];
             }
+        }
+
+        public static IEnumerable<Device> GetDevices()
+        {
+            yield break;
         }
     }
 }

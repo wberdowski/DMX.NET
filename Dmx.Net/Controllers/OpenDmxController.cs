@@ -1,12 +1,16 @@
-﻿using System.Runtime.InteropServices;
+﻿using Dmx.Net.Attributes;
+using Dmx.Net.Common;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Dmx.Net.Controllers
 {
+    [Controller("Open DMX")]
     public class OpenDmxController : ControllerBase
     {
         public new bool IsOpen => _handle != IntPtr.Zero;
 
-        private const string DllName = "FTD2XX";
+        private const string DllName = $"{Config.LibPath}/FTD2XX";
 
         #region INTEROP
 
@@ -62,9 +66,9 @@ namespace Dmx.Net.Controllers
         {
         }
 
-        public override void Open()
+        public override void Open(int deviceIndex)
         {
-            _status = FT_Open(0, ref _handle);
+            _status = FT_Open((uint)deviceIndex, ref _handle);
             _status = FT_ResetDevice(_handle);
             _status = FT_SetDivisor(_handle, (char)12);
             _status = FT_SetDataCharacteristics(_handle, DataBits.Bits8, StopBits.StopBits2, Parity.None);
@@ -78,7 +82,7 @@ namespace Dmx.Net.Controllers
 
             ClearBuffer();
 
-            base.Open();
+            base.Open(deviceIndex);
         }
 
         public override void Close()
@@ -112,6 +116,56 @@ namespace Dmx.Net.Controllers
             await Task.CompletedTask;
         }
 
+        public static new IEnumerable<Device> GetDevices()
+        {
+            uint count = 0;
+
+            var status = FT_CreateDeviceInfoList(ref count);
+            if (status != Status.Ok)
+            {
+                throw new IOException("Could not get devices count.");
+            }
+
+            var devices = new FTDevice[count];
+            var serial = new byte[16];
+            var description = new byte[64];
+
+            for (var i = 0; i < count; i++)
+            {
+                devices[i] = new FTDevice();
+
+                status = FT_GetDeviceInfoDetail((uint)i, ref devices[i].Flags, ref devices[i].Type, ref devices[i].ID, ref devices[i].LocId, serial, description, ref devices[i].ftHandle);
+                if (status != Status.Ok)
+                {
+                    throw new IOException("Could not get device info.");
+                }
+
+                devices[i].DeviceIndex = (uint)i;
+                devices[i].SerialNumber = Encoding.ASCII.GetString(serial);
+                devices[i].Description = Encoding.ASCII.GetString(description);
+
+                var nullIndex = devices[i].SerialNumber.IndexOf('\0');
+
+                if (nullIndex != -1)
+                {
+                    devices[i].SerialNumber = devices[i].SerialNumber.Substring(0, nullIndex);
+                }
+
+                nullIndex = devices[i].Description.IndexOf('\0');
+                if (nullIndex != -1)
+                {
+                    devices[i].Description = devices[i].Description.Substring(0, nullIndex);
+                }
+
+                yield return new Device(
+                    new ControllerInfo(typeof(OpenDmxController)),
+                    i,
+                    devices[i].SerialNumber,
+                    devices[i].Description
+                );
+            }
+        }
+
         public override void Dispose()
         {
             if (!IsDisposed)
@@ -126,6 +180,18 @@ namespace Dmx.Net.Controllers
         }
 
         #region STRUCTS
+
+        private class FTDevice
+        {
+            public uint DeviceIndex;
+            public uint Flags;
+            public DeviceType Type;
+            public uint ID;
+            public uint LocId;
+            public string SerialNumber;
+            public string Description;
+            public IntPtr ftHandle;
+        }
 
         private enum DeviceType
         {

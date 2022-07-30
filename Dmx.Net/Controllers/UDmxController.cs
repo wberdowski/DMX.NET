@@ -1,11 +1,16 @@
-﻿using System.Runtime.InteropServices;
+﻿using Dmx.Net.Attributes;
+using Dmx.Net.Common;
+using System.Runtime.InteropServices;
 
 namespace Dmx.Net.Controllers
 {
     [Experimental]
+    [Controller("uDMX")]
     public class UDmxController : ControllerBase
     {
-        private const string DllName = "uDMX";
+        public new bool IsOpen => Connected();
+
+        private const string DllName = $"{Config.LibPath}/uDMX";
 
         #region INTEROP
 
@@ -22,6 +27,7 @@ namespace Dmx.Net.Controllers
         public static extern bool Connected();
 
         #endregion
+
         public UDmxController()
         {
 
@@ -40,6 +46,19 @@ namespace Dmx.Net.Controllers
             }
 
             await Task.CompletedTask;
+        }
+
+        public static new IEnumerable<Device> GetDevices()
+        {
+            if (Connected())
+            {
+                yield return new Device(
+                    new ControllerInfo(typeof(UDmxController)),
+                    0,
+                    null,
+                    "uDMX USB interface"
+                );
+            }
         }
     }
 }

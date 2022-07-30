@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dmx.Net\Dmx.Net.csproj" />
+    <ProjectReference Include="..\..\Dmx.Net\Dmx.Net.csproj" />
   </ItemGroup>
 
 </Project>
