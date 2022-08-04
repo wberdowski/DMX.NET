@@ -3,7 +3,7 @@
 ![GitHub](https://img.shields.io/github/license/wberdowski/DMX.NET)
 
 DMX.NET is a compact library that makes it easy to communicate with your USB to DMX512 interfaces.
-It includes all necessary driver files, so you don't have to install them manually.
+<!---It includes all necessary driver files, so you don't have to install them manually.--->
 
 ## Usage
 Interraction with the library is mostly done through the ```ControllerManager```.
