@@ -11,7 +11,7 @@ Additionally there is a build-in ```DmxTimer```, which is used to synchronize mu
 
 **You can learn on real world examples by exploring projects in the [Samples](https://github.com/wberdowski/DMX.NET/tree/master/Samples/) directory.**
 
-For the impatient here's the minimal code to get things working (you can find the whole project [here](https://github.com/wberdowski/DMX.NET/tree/master/Samples/)):
+For the impatient here's the minimal code to get things working (you can find the whole project [here](https://github.com/wberdowski/DMX.NET/tree/master/Samples/Dmx.Net.MinimalSample):
 ```csharp
 var timer = new DmxTimer();
 var controller = new OpenDmxController(timer);
