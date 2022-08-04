@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dmx.Net.MinimalSample", "Dmx.Net.MinimalSample\Dmx.Net.MinimalSample.csproj", "{BBA66811-EF29-4F3F-91AF-DC936D912651}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,12 +51,21 @@ Global
 		{6E5A63B6-1401-43EB-B4EA-8C92026E2505}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E5A63B6-1401-43EB-B4EA-8C92026E2505}.Release|x86.ActiveCfg = Release|x86
 		{6E5A63B6-1401-43EB-B4EA-8C92026E2505}.Release|x86.Build.0 = Release|x86
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Debug|x86.Build.0 = Debug|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Release|x86.ActiveCfg = Release|Any CPU
+		{BBA66811-EF29-4F3F-91AF-DC936D912651}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6E5A63B6-1401-43EB-B4EA-8C92026E2505} = {B77B7CC5-546B-4C7F-9010-367E61D28EBA}
+		{BBA66811-EF29-4F3F-91AF-DC936D912651} = {B77B7CC5-546B-4C7F-9010-367E61D28EBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F99502B3-0C12-47A2-B8C4-82EFB093A2AE}
