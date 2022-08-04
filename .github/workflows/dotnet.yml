@@ -17,8 +17,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Dmx.Net
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build Dmx.Net --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test Dmx.Net.Tests --no-build --verbosity normal
