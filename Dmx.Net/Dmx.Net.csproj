@@ -5,6 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x86</Platforms>
+    <PackageId>DMX.NET</PackageId>
+    <Authors>Wojciech Berdowski</Authors>
+    <Product>DMX.NET</Product>
+    <PackageProjectUrl>https://github.com/wberdowski/DMX.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/wberdowski/DMX.NET</RepositoryUrl>
+    <PackageTags>dmx512;dotnet6.0</PackageTags>
+    <Description>DMX.NET is a compact library that makes it easy to communicate with your USB to DMX512 interfaces.</Description>
+    <Version>1.0.0-alpha</Version>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
