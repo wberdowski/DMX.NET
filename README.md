@@ -5,7 +5,9 @@
 
 DMX.NET is a compact library that makes it easy to communicate with your USB to DMX512 interfaces.
 <!---It includes all necessary driver files, so you don't have to install them manually.--->
-
+```diff
+! WARNING ! Currently, the library is targeting the x86 platform mainly due to the lack of a 64-bit uDMX driver.
+```
 ## NuGet package
 https://www.nuget.org/packages/DMX.NET
 
@@ -42,8 +44,6 @@ I'm a full-time programmer and maintain this project in my free time.
 It's far from finished, but I'm doing my best to deliver regular updates.
 Additional help is very much wanted, mainly in terms of adding support for more controller modules.
 If you're interested in contributing to this project, please see **Contributing** section below.
-
-**WARNING! Currently, the library is targeting the x86 platform mainly due to the lack of a 64-bit uDMX driver.** 
 
 ## Supported interfaces
 |Interface|Support status|
