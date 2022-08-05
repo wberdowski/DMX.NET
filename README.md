@@ -1,9 +1,13 @@
 # DMX.NET
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/wberdowski/DMX.NET/.NET/master)
-![GitHub](https://img.shields.io/github/license/wberdowski/DMX.NET)
+[![GitHub](https://img.shields.io/github/license/wberdowski/DMX.NET)](https://github.com/wberdowski/DMX.NET/blob/master/LICENSE)
+[![Nuget](https://img.shields.io/nuget/v/DMX.NET)](https://www.nuget.org/packages/DMX.NET/)
 
 DMX.NET is a compact library that makes it easy to communicate with your USB to DMX512 interfaces.
 <!---It includes all necessary driver files, so you don't have to install them manually.--->
+
+## NuGet package
+https://www.nuget.org/packages/DMX.NET
 
 ## Usage
 Interraction with the library is mostly done through the ```ControllerManager```.
@@ -11,7 +15,7 @@ Additionally there is a build-in ```DmxTimer```, which is used to synchronize mu
 
 **You can learn on real world examples by exploring projects in the [Samples](https://github.com/wberdowski/DMX.NET/tree/master/Samples/) directory.**
 
-For the impatient here's the minimal code to get things working (you can find the whole project [here](https://github.com/wberdowski/DMX.NET/tree/master/Samples/Dmx.Net.MinimalSample):
+For the impatient here's the minimal code to get things working (you can find the whole project [here](https://github.com/wberdowski/DMX.NET/tree/master/Samples/Dmx.Net.MinimalSample)):
 ```csharp
 var timer = new DmxTimer();
 var controller = new OpenDmxController(timer);
