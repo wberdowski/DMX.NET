@@ -45,6 +45,11 @@ If you're interested in contributing to this project, please see **Contributing*
 
 **WARNING! Currently, the library is targeting the x86 platform mainly due to the lack of a 64-bit uDMX driver.** 
 
+## Supported interfaces
+|Interface|Support status|
+|---|---|
+|Open DMX|Full|
+|uDMX|Experimental|
 ## Roadmap
 - Provide required driver files
 - Make library 64-bit
