@@ -39,7 +39,11 @@ It's far from finished, but I'm doing my best to deliver regular updates.
 Additional help is very much wanted, mainly in terms of adding support for more controller modules.
 If you're interested in contributing to this project, please see **Contributing** section below.
 
+**WARNING! Currently, the library is targeting the x86 platform mainly due to the lack of a 64-bit uDMX driver.** 
+
 ## Roadmap
+- Provide required driver files
+- Make library 64-bit
 - Improve handling of USB disconnecting and reconnecting
 - Art-Net support
 
