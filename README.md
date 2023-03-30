@@ -1,7 +1,7 @@
 # DMX.NET
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/wberdowski/DMX.NET/.NET/master)
-[![GitHub](https://img.shields.io/github/license/wberdowski/DMX.NET)](https://github.com/wberdowski/DMX.NET/blob/master/LICENSE)
 [![Nuget](https://img.shields.io/nuget/v/DMX.NET)](https://www.nuget.org/packages/DMX.NET/)
+![GitHub Workflow Status](https://github.com/wberdowski/DMX.NET/actions/workflows/dotnet.yml/badge.svg)
+[![GitHub](https://img.shields.io/github/license/wberdowski/DMX.NET)](https://github.com/wberdowski/DMX.NET/blob/master/LICENSE)
 
 DMX.NET is a compact library that makes it easy to communicate with your USB to DMX512 interfaces.
 <!---It includes all necessary driver files, so you don't have to install them manually.--->
